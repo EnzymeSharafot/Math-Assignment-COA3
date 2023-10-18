@@ -144,7 +144,7 @@
                 const second = a * sinT * sinT + b * cosT * cosT - h * sin2T;
                 const third = b * sin2T - a * sin2T + 2 * h * cos2T;
                 const fourth = 2 * f * sinT + 2 * g * cosT;
-                const five = 2 * g * sinT - 2 * f * cosT;
+                const five = - 2 * g * sinT + 2 * f * cosT;
 
                 const resultText = `The Equation After Transformation Is:<br>(${first.toFixed(2)})x^2 + (${third.toFixed(2)})xy + (${second.toFixed(2)})y^2 + (${fourth.toFixed(2)})x + (${five.toFixed(2)})y + (${c.toFixed(2)}) = 0`;
                 const resultTextElement = document.getElementById('resultText');

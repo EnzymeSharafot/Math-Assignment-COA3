@@ -143,7 +143,7 @@
                 const first = a * cosT * cosT + b * sinT * sinT - h * sin2T;
                 const second = a * sinT * sinT + b * cosT * cosT + h * sin2T;
                 const third = a * sin2T - b * sin2T + 2 * h * cos2T;
-                const fourth = 2 * g * sinT - 2 * f * cosT;
+                const fourth = -2 * g * sinT + 2 * f * cosT;
                 const five = 2 * g * cosT + 2 * f * sinT;
 
                 const resultText = `The Original Equation Is:<br>(${first.toFixed(2)})x^2 + (${third.toFixed(2)})xy + (${second.toFixed(2)})y^2 + (${fourth.toFixed(2)})x + (${five.toFixed(2)})y + (${c.toFixed(2)}) = 0`;

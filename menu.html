@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tesla-Themed Navigation Page</title>
+    <style>
+        body {
+            background-color: #1d1d1d;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #ffcc29;
+            font-size: 36px;
+        }
+        h2 {
+            color: #ffcc29;
+            font-size: 36px;
+        }
+        button {
+            background-color: #cc2e2e;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Second Degree Equation Rotation</h1>
+    <h2>Choose Operation You Want To Perform :</h2>
+    <button onclick="navigateToLx()">Original Equation To Rotated Equation</button>
+    <button onclick="navigateToLy()">Rotated Equation To Original Equation</button>
+
+    <script>
+        function navigateToLx() {
+            window.location.href = 'lx.html';
+        }
+
+        function navigateToLy() {
+            window.location.href = 'ly.html';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ocean Equation Transformation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0077b6; /* Ocean Blue background */
+            margin: 0;
+            padding: 0;
+            color: #fff; /* White text color */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #2a9d8f; /* Turquoise border */
+            border-radius: 10px;
+            background-color: #1a535c; /* Dark teal background */
+            box-shadow: 0px 0px 20px rgba(0, 119, 182, 0.4); /* Ocean Blue box shadow */
+            text-align: center;
+        }
+        h1 {
+            color: #f4a261; /* Sandy Orange text color */
+            text-align: center;
+            font-size: 36px;
+        }
+        h2 {
+            color: #f4a261; /* Sandy Orange text color */
+            text-align: center;
+            font-size: 20px;
+        }
+        .input-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .input-group label {
+            width: 100px;
+            text-align: right;
+            margin-right: 10px;
+            color: #e76f51; /* Coral color */
+        }
+        .input-group input {
+            width: 100px;
+            padding: 5px;
+            background-color: #264653; /* Dark Turquoise background */
+            border: 2px solid #e76f51; /* Coral border */
+            color: #fff; /* White text color */
+            border-radius: 5px;
+        }
+        button {
+            background-color: #f4a261; /* Sandy Orange button background */
+            color: #111;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #e76f51; /* Coral color on hover */
+        }
+        .result {
+            margin-top: 20px;
+        }
+        #resultText {
+            background-color: #264653; /* Dark Turquoise background */
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #fff; /* White text color */
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Original Equation To Rotated Equation</h1>
+        <h2>General Equation: ax^2 + 2hxy + by^2 + 2gx + 2fy + c = 0</h2>
+        <div class="input-group">
+            <label for="a">a:</label>
+            <input type="text" id="a">
+        </div>
+        <div class="input-group">
+            <label for="b">b:</label>
+            <input type="text" id="b">
+        </div>
+        <div class="input-group">
+            <label for="c">c:</label>
+            <input type="text" id="c">
+        </div>
+        <div class="input-group">
+            <label for="h">2h:</label>
+            <input type="text" id="h">
+        </div>
+        <div class="input-group">
+            <label for="g">2g:</label>
+            <input type="text" id="g">
+        </div>
+        <div class="input-group">
+            <label for="f">2f:</label>
+            <input type="text" id="f">
+        </div>
+        <div class="input-group">
+            <label for="angle">Angle (degree):</label>
+            <input type="text" id="angle">
+        </div>
+        <button onclick="rotateEquation()">Transform Equation</button>
+        <div class="result">
+            <h2>Result:</h2>
+            <div id="resultText"></div>
+        </div>
+        <button onclick="goToHomePage()">Return to Home Page</button>
+    </div>
+
+    <script>
+        function rotateEquation() {
+            try {
+                const a = parseFloat(document.getElementById('a').value);
+                const b = parseFloat(document.getElementById('b').value);
+                const c = parseFloat(document.getElementById('c').value);
+                const h = parseFloat(document.getElementById('h').value) / 2;
+                const f = parseFloat(document.getElementById('f').value) / 2;
+                const g = parseFloat(document.getElementById('g').value) / 2;
+                const T = parseFloat(document.getElementById('angle').value);
+                const sinT = Math.sin((T * Math.PI) / 180);
+                const cosT = Math.cos((T * Math.PI) / 180);
+                const cos2T = Math.cos((2 * T * Math.PI) / 180);
+                const sin2T = Math.sin((2 * T * Math.PI) / 180);
+
+                const first = a * cosT * cosT + b * sinT * sinT + h * sin2T;
+                const second = a * sinT * sinT + b * cosT * cosT - h * sin2T;
+                const third = b * sin2T - a * sin2T + 2 * h * cos2T;
+                const fourth = 2 * f * sinT + 2 * g * cosT;
+                const five = 2 * g * sinT - 2 * f * cosT;
+
+                const resultText = `The Equation After Transformation Is:<br>(${first.toFixed(2)})x^2 + (${third.toFixed(2)})xy + (${second.toFixed(2)})y^2 + (${fourth.toFixed(2)})x + (${five.toFixed(2)})y + (${c.toFixed(2)}) = 0`;
+                const resultTextElement = document.getElementById('resultText');
+                resultTextElement.innerHTML = resultText;
+                resultTextElement.style.opacity = 1;
+            } catch (error) {
+                alert('Invalid input. Please enter valid numbers.');
+            }
+        }
+        function goToHomePage() {
+            window.location.href = 'menu.html';
+        }
+    </script>
+</body>
+</html>
